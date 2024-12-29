@@ -106,7 +106,7 @@ class _ChatListState extends ConsumerState<ChatList> {
                         width: 150,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: Colors.transparent.withOpacity(.5)),
+                            color: Colors.transparent.withOpacity(.4)),
                         child: Center(
                             child: Text(curr)),
                       ),),
@@ -143,7 +143,7 @@ class _ChatListState extends ConsumerState<ChatList> {
                       width: 150,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Colors.transparent.withOpacity(.5)),
+                          color: Colors.transparent.withOpacity(.4)),
                       child: Center(
                           child: Text(curr)),
                     ),),

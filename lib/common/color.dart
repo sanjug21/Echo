@@ -12,6 +12,6 @@ const chatBarMessage = Color.fromRGBO(30, 36, 40, 1);
 
 const postCardBg=Color.fromRGBO(6,10,10, 1);
 
-const File? backgroundImage=null;
+File? backgroundImage;
 
 //19, 28, 33

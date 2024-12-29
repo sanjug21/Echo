@@ -107,7 +107,8 @@ class _PostScreenState extends ConsumerState<PostScreen> {
                           ),
                         );
                       }
-                      return ListView.builder(
+                      if(snapshot.hasData) {
+                        return ListView.builder(
                           itemCount: snapshot.data!.docs.length,
                           itemBuilder: (context, index) {
                             Post post = Post.fromPost(
@@ -115,6 +116,8 @@ class _PostScreenState extends ConsumerState<PostScreen> {
 
                             return PostCard(post: post, profile: false);
                           });
+                      }
+                      return Container();
                     }),
               ));
         });

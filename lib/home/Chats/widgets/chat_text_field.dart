@@ -26,7 +26,7 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
   final message=TextEditingController();
 
   // bool isRecorderInit=false;
-   bool isRecording=false;
+  //  bool isRecording=false;
   bool isShowEmoji=false;
   FocusNode focusNode=FocusNode();
   bool isShowEmojiContainer = false;
@@ -51,9 +51,12 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
     if(focusNode.hasFocus) {
       hideKeyboard();
       showEmojiContainer();
-    } else if (isShowEmojiContainer ) {
-      showKeyboard();
-      hideEmojiContainer();
+      return;
+    }
+    if (isShowEmojiContainer ) {
+           hideEmojiContainer();
+    }else{
+      showEmojiContainer();
     }
   }
 
@@ -98,7 +101,7 @@ void sendFileMsg(bool img)async{
 
     return
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 5),
           child: Column(
             children: [
               Row(
@@ -129,9 +132,9 @@ void sendFileMsg(bool img)async{
                         cursorColor: tabColor,
 
                         decoration: InputDecoration(
-
+                          contentPadding: EdgeInsets.symmetric(vertical: 5),
                           prefixIcon: IconButton(onPressed:toggleEmojiKeyboardContainer,icon:const Icon(Icons.emoji_emotions_sharp),splashRadius: 5,),
-                          suffixIcon: !disableIcons?SizedBox(
+                          suffixIcon: disableIcons?IconButton(onPressed: sendTextMsg, icon: Icon(Icons.send_rounded)):SizedBox(
                             width: 100,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -139,7 +142,7 @@ void sendFileMsg(bool img)async{
                                 IconButton(onPressed:(){},icon:const Icon(Icons.attach_file_sharp),splashRadius: 5,),
                                 IconButton(onPressed:()=>sendFileMsg(true),icon:const Icon(Icons.camera_alt_outlined),splashRadius: 5,),
                               ],),
-                          ):null,
+                          ),
                           hintText: "Write a message",
                           focusedBorder:OutlineInputBorder(
                             borderRadius: BorderRadius.circular(35),
@@ -160,19 +163,7 @@ void sendFileMsg(bool img)async{
 
                     ),
                   ),
-                  const SizedBox(width: 10,),
 
-                  GestureDetector(
-                    onTap: sendTextMsg,
-                    child: CircleAvatar(
-                      backgroundColor: tabColor,
-                      radius: 25,
-                      child:Icon(
-                        sendButton?Icons.send:isRecording?Icons.close:Icons.mic,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
 
                 ],
               ),

@@ -84,8 +84,6 @@ class _PostCardState extends ConsumerState<PostCard> {
                   ],
                 ),
 
-                  IconButton(
-                      onPressed: () {}, icon: Icon(Icons.more_vert_rounded)),
                 if (curr && widget.profile && !widget.post.isImage)
                   MenuAnchor(
                       builder: (BuildContext context, MenuController controller,

@@ -303,11 +303,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                                 child: Text("No post available"),
                                               );
                                             }
-                                            return Expanded(
+                                            if(snapshot.hasData) {
+                                              return Expanded(
                                                 child: GridView.builder(
                                                     gridDelegate:
                                                         SliverGridDelegateWithFixedCrossAxisCount(
-                                                            crossAxisCount: 4),
+                                                            crossAxisCount: 3),
                                                     itemCount: snapshot
                                                         .data!.docs.length,
                                                     itemBuilder:
@@ -346,6 +347,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                                                 );
                                                               })));
                                                     }));
+                                            }
+                                            return Container();
                                           })
                                       : StreamBuilder(
                                           stream: ref
@@ -370,7 +373,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                                     Text("No thoughts available"),
                                               );
                                             }
-                                            return Expanded(
+                                            if(snapshot.hasData) {
+                                              return Expanded(
                                               child: ListView.builder(
                                                   scrollDirection: Axis.vertical,
                                                   itemCount:
@@ -384,6 +388,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                                         profile: true);
                                                   }),
                                             );
+                                            }
+                                            return Container();
                                           })
                                 ],
                               ),

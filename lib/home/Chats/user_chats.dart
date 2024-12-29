@@ -1,5 +1,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:echo/common/Widget/image_picker.dart';
 import 'package:echo/common/color.dart';
 import 'package:echo/home/Chats/widgets/chat_list.dart';
 import 'package:echo/home/Chats/widgets/chat_text_field.dart';
@@ -83,22 +84,55 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
               return Container();
             }),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon:  Icon(
-              Icons.more_vert,
-              color:Colors.white,
-              size: size.width*.05,
+          MenuAnchor(
+            style: MenuStyle(
+              backgroundColor:WidgetStateProperty.all(Colors.transparent.withOpacity(.8)),
+              shape: WidgetStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+              ))
             ),
-          ),
+
+              builder: (BuildContext context, MenuController controller,
+                  Widget? child) {
+                return IconButton(
+                  onPressed: () {
+                    if (controller.isOpen) {
+                      controller.close();
+                    } else {
+                      controller.open();
+                    }
+                  },
+                  icon: const Icon(Icons.more_vert_rounded,color: Colors.white,),
+                );
+              },
+              menuChildren: [
+                MenuItemButton(
+                  onPressed: ()async{
+                    backgroundImage=await pickImageFromGallery(context, "gallery");
+                    setState(() {
+
+                    });
+                  },
+                  child: Text("Change Wallpaper"),),
+                MenuItemButton(
+                  onPressed: (){
+                    setState(() {
+                      backgroundImage=null;
+                    });
+                  },
+                  child: Text("Remove wallpaper"),
+                )
+              ]),
+
         ],
+
       ),
         
       body:  Container(
         height: size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: backgroundImage==null?AssetImage("image/back.jpg"):FileImage(backgroundImage!),
+            image: backgroundImage==null?AssetImage("image/2nd.png"):FileImage(backgroundImage!),
             fit: BoxFit.cover,
           ),
         ),

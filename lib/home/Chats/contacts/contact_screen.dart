@@ -77,12 +77,7 @@ class _ContactScreenState extends ConsumerState<ContactScreen> {
                                height: 50,fit: BoxFit.cover,),
                            ),
                           ),
-                        //  leading: CircleAvatar(
-                        //   backgroundColor: Colors.black87,
-                        //   // backgroundImage: NetworkImage(contact.profilePic),
-                        //   radius: 25,
-                        //    child: CachedNetworkImage(imageUrl: contact.profilePic,fit: BoxFit.cover,),
-                        // ),
+
 
                       ),
                     ),
