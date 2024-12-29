@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:echo/common/months.dart';
 import 'package:echo/home/Chats/widgets/sender_message_card.dart';

@@ -1,4 +1,6 @@
 
+// ignore_for_file: deprecated_member_use
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:echo/common/Widget/image_picker.dart';
 import 'package:echo/common/color.dart';
