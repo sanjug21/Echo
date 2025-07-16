@@ -57,10 +57,11 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Echo',
-      theme: ThemeData.dark().copyWith(
-          textSelectionTheme:
-              TextSelectionThemeData(selectionHandleColor: tabColor),
-          colorScheme: const ColorScheme.dark()),
+      // theme: ThemeData.dark().copyWith(
+      //     textSelectionTheme:
+      //         TextSelectionThemeData(selectionHandleColor: tabColor),
+      //     colorScheme: const ColorScheme.dark()),
+      themeMode: ThemeMode.system,
       onGenerateRoute: (settings) => generateRoute(settings),
       home:size.width>500?LoginWeb(): ref.watch(userDataProvider).when(
           data: (user) {
